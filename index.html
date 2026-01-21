@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Alter-nativa TV | Portal de Noticias</title>
+<link rel="apple-touch-icon" href="imagenes/logo2.jpeg">
+<link rel="icon" type="image/png" href="imagenes/logo2.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<audio id="musicaFondo" loop preload="auto">
+    <source src="musica/pink-venom.mp3" type="audio/mpeg">
+</audio>
+
+<div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100000; display: flex; align-items: center; justify-content: center; transition: all 1s ease-out; backdrop-filter: blur(20px) brightness(0.3); -webkit-backdrop-filter: blur(20px) brightness(0.3); background-color: rgba(0,0,0,0.4);">
+    
+    <div style="text-align: center; padding: 20px; z-index: 100001;">
+        
+        <div class="logo-intro" style="position: relative; margin-bottom: 25px; display: inline-block;">
+            <div style="position: absolute; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 60px rgba(255, 20, 147, 0.6); animation: pulse-pink 2s infinite;"></div>
+            <img src="imagenes/logo2.jpeg" style="width: 170px; height: 170px; border-radius: 50%; border: 4px solid #ff1493; position: relative; object-fit: cover; box-shadow: 0 0 20px rgba(0,0,0,0.8);">
+        </div>
+
+        <h1 style="color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 10vw, 4.5rem); letter-spacing: 6px; margin: 0; text-shadow: 0 10px 20px rgba(0,0,0,0.9);">
+            ALTER-NATIVA <span style="color: #ff1493;">TV</span>
+        </h1>
+        
+        <p style="color: #ddd; font-family: 'Montserrat', sans-serif; font-size: 1.1rem; margin-top: 10px; margin-bottom: 40px; letter-spacing: 4px; text-transform: uppercase; font-weight: 400;">
+            Periodismo con Identidad
+        </p>
+
+        <button onclick="iniciarPortal()" style="background: linear-gradient(45deg, #ff1493, #ff0000); color: white; border: none; padding: 22px 70px; font-family: 'Bebas Neue'; font-size: 2.2rem; border-radius: 60px; cursor: pointer; box-shadow: 0 15px 45px rgba(255, 20, 147, 0.5); transition: 0.4s; letter-spacing: 3px; text-transform: uppercase;"
+            onmouseover="this.style.transform='scale(1.08) translateY(-5px)'; this.style.boxShadow='0 20px 50px rgba(255, 20, 147, 0.7)';"
+            onmouseout="this.style.transform='scale(1) translateY(0)';"
+            id="btn-entrar">
+            ENTRAR AL PORTAL
+        </button>
+
+        <div style="margin-top: 50px; color: rgba(255,255,255,0.4); font-family: 'Montserrat'; font-size: 0.85rem; letter-spacing: 2px; font-weight: 300;">
+            <i class="fas fa-headphones" style="margin-right: 10px; color: #ff1493;"></i> RECOMENDAMOS EL USO DE AURICULARES
+        </div>
+    </div>
+</div>
+
+<style>
+@keyframes pulse-pink {
+    0% { transform: scale(0.96); opacity: 0.7; }
+    50% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(0.96); opacity: 0.7; }
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+</style>
+
+<script>
+// Bloquear scroll al inicio
+document.body.classList.add('modal-open');
+
+function iniciarPortal() {
+    // 1. Reproducir el audio local
+    const audio = document.getElementById('musicaFondo');
+    if (audio) {
+        audio.volume = 0.6; // Ajustamos volumen al 60%
+        audio.play().catch(e => console.log("Audio bloqueado hasta interacción"));
+    }
+
+    // 2. Efectos visuales de desvanecimiento
+    const splash = document.getElementById('splash-screen');
+    if (splash) {
+        splash.style.opacity = '0';
+        splash.style.backdropFilter = 'blur(0px) brightness(1)';
+        splash.style.pointerEvents = 'none'; 
+
+        // 3. Quitar el bloqueo y el splash
+        setTimeout(() => {
+            splash.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = 'auto'; 
+        }, 1000);
+    }
+}
+</script>
+<div class="watermark-bg">
+    <img src="imagenes/leon1.jpg" class="logo-uno" alt="Logo Fondo 1">
+    <img src="imagenes/leon2.jpg" class="logo-dos" alt="Logo Fondo 2">
+    <img src="imagenes/leon3.jpg" class="logo-tres" alt="Logo Fondo 3">
+</div>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0"></script>
+
+<a href="https://wa.me/3118099371?text=Hola%20Alter-nativa%20TV,%20quiero%20hacer%20una%20denuncia/pauta" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp my-float"></i>
+    <span class="tooltip-wa">DENUNCIAS AQUÍ</span>
+</a>
+<div class="news-ticker-bar">
+    <div class="ticker-tag">EN VIVO</div>
+    <marquee scrollamount="10">
+        ALTER-NATIVA TV: COMUNICACIÓN POPULAR — LA VERDAD DESDE EL TERRITORIO — SÍGUENOS EN NUESTRAS REDES SOCIALES PARA ESTAR BIEN INFORMADO
+    </marquee>
+</div>
+
+<header class="main-header" data-aos="fade-down">
+    <div class="container-header">
+        <div class="header-left">
+            <img src="imagenes/logo2.jpeg" alt="Logo" class="logo-top">
+            <span class="brand-name">ALTER-NATIVA TV</span>
+        </div>
+        
+<nav class="nav-menu">
+    <a href="#inicio" class="nav-link">INICIO</a>
+    <a href="#redes" class="nav-link">REDES</a>
+    <a href="#pautas" class="nav-link">PAUTAS</a>
+    
+<a href="#pautas" class="nav-btn-pauta">
+    <i class="fas fa-bullhorn"></i> PAUTE AQUÍ
+</a>
+    <a href="https://wa.me/3118099371?text=Hola,%20quiero%20hacer%20una%20denuncia" class="nav-btn-wa" target="_blank">
+        <i class="fab fa-whatsapp"></i> DENUNCIAS
+    </a>
+</nav>
+    </div>
+</header>
+
+    <main class="portal-container" id="inicio">
+        
+        <section class="block-hero" data-aos="zoom-in">
+            <div class="hero-card">
+                <img src="imagenes/logo5.jpeg" alt="Portada" class="hero-image">
+                <div class="hero-text-overlay">
+                    <span class="badge-live">REPORTAJE CENTRAL</span>
+                    <h1>PERIODISMO CON COMPROMISO SOCIAL</h1>
+                    <p>La voz de la comunidad presente en todas las plataformas digitales.</p>
+                </div>
+            </div>
+        </section>
+        <section class="category-dashboard" data-aos="fade-up">
+<section class="category-dashboard" data-aos="fade-up">
+    
+    <div class="enfoque-main-container">
+        <div class="neon-card-enfoque">
+            <div class="enfoque-title-wrapper">
+                <h2 class="section-title-premium">NUESTROS ENFOQUES</h2>
+            </div>
+            
+            <div class="neon-divider-glow"></div>
+            
+            <div class="enfoque-desc-wrapper">
+                <p class="enfoque-subtitle">Periodismo especializado con visión territorial</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-grid">
+        <a href="#judicial" class="cat-item">
+            <i class="fas fa-gavel"></i>
+            <span>JUDICIAL</span>
+            <small>Justicia y Ley</small>
+        </a>
+<a href="#social" class="cat-item">
+    <i class="fas fa-hands-helping"></i>
+    <span>SOCIAL</span>
+    <small>Servicio Social</small>
+</a>
+
+<a href="#politica" class="cat-item">
+    <i class="fas fa-landmark"></i> <span>POLÍTICA</span>
+    <small>Poder y Territorio</small>
+</a>
+        <a href="#gourmet" class="cat-item">
+            <i class="fas fa-utensils"></i>
+            <span>GOURMET</span>
+            <small>Sabor Local</small>
+        </a>
+        <a href="#tecnologia" class="cat-item">
+            <i class="fas fa-microchip"></i>
+            <span>TECNOLOGÍA</span>
+            <small>Innovación</small>
+        </a>
+        <a href="#deportes" class="cat-item">
+            <i class="fas fa-running"></i>
+            <span>DEPORTES</span>
+            <small>Talento Regional</small>
+        </a>
+        <a href="#denuncias" class="cat-item">
+            <i class="fas fa-bullhorn"></i>
+            <span>DENUNCIAS</span>
+            <small>Tu Voz Aquí</small>
+        </a>
+    </div>
+</section>
+</section>
+  <div class="social-feeds-grid" id="redes">
+            
+<section class="news-block fb-border" data-aos="fade-up">
+    <div class="stats-box-main" style="border: 2px solid #1877f2; background: rgba(0,0,0,0.95); padding: 30px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 0 20px rgba(24, 119, 242, 0.2);">
+        
+        <div class="live-status-header" style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="ping-dot" style="background-color: #1877f2; box-shadow: 0 0 10px #1877f2; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+            <span class="live-text" style="font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; letter-spacing: 3px; color: #1877f2;">FEED DE NOTICIAS EN VIVO</span>
+        </div>
+
+        <h2 class="section-title-premium" style="font-size: 3rem; margin-bottom: 5px; color: #fff; text-align: center; font-family: 'Bebas Neue'; letter-spacing: 2px;">FACEBOOK OFICIAL</h2>
+        <div class="neon-divider-glow" style="max-width: 500px; margin: 0 auto 30px auto; background: linear-gradient(90deg, transparent, #1877f2, transparent); height: 3px;"></div>
+
+        <div class="block-content" style="background: #ffffff; border-radius: 15px; overflow: hidden; border: 1px solid #333; width: 100%; max-width: 500px; margin: 0 auto; height: 750px;">
+            <iframe 
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FAlternativaT.V.Tunja&tabs=timeline&width=500&height=750&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true" 
+                width="100%" 
+                height="750" 
+                style="border:none; overflow:hidden; width: 100%; height: 100%; display: block;" 
+                scrolling="no" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
+
+        <p style="margin-top: 20px; text-align: center; font-family: 'Montserrat'; color: #1877f2; font-weight: 800; font-size: 1rem; letter-spacing: 1px;">
+            INTERACTÚA CON NUESTRA COMUNIDAD
+        </p>
+
+        <div class="scanner-line-glow" style="position: absolute; width: 100%; height: 50px; background: linear-gradient(to bottom, transparent, rgba(24, 119, 242, 0.15), transparent); border-bottom: 1px solid rgba(24, 119, 242, 0.4); pointer-events: none; top: 0;"></div>
+    </div>
+</section>
+<section class="news-block yt-border" data-aos="fade-up" data-aos-delay="100">
+    <div class="stats-box-main" style="border: 2px solid #ff0000; background: rgba(0,0,0,0.95); padding: 25px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); min-height: 1100px; display: flex; flex-direction: column;">
+        
+        <div class="live-status-header" style="margin-bottom: 15px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="ping-dot" style="background-color: #ff0000; box-shadow: 0 0 10px #ff0000; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+            <span class="live-text" style="font-family: 'Montserrat'; font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; color: #ff0000;">TRANSMISIÓN DIGITAL ACTIVA</span>
+        </div>
+
+        <h2 class="section-title-premium" style="font-size: 2.8rem; margin-bottom: 5px; color: #fff; text-align: center; font-family: 'Bebas Neue'; letter-spacing: 2px;">CONTENIDO AUDIOVISUAL</h2>
+        <div class="neon-divider-glow" style="max-width: 400px; margin: 0 auto 25px auto; background: linear-gradient(90deg, transparent, #ff0000, transparent); height: 3px;"></div>
+
+        <div class="block-content" style="background: #000; border-radius: 15px; border: 1px solid #333; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.5); flex-grow: 1; display: flex; flex-direction: column; height: auto;">
+            
+            <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000;">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                    src="https://www.youtube.com/embed/qfMhHWDeDZs" 
+                    title="YouTube Alternativa TV" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="yt-info" style="padding: 30px 20px; text-align: center; background: linear-gradient(180deg, #111, #000); flex-grow: 1; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
+                
+                <div>
+                    <h3 style="color: #c5a059; font-family: 'Bebas Neue'; font-size: 2.2rem; margin-bottom: 10px; letter-spacing: 1px;">ALTER-NATIVA TV EN YOUTUBE</h3>
+                    <p style="color: #aaa; font-family: 'Montserrat'; font-size: 1rem; margin-bottom: 20px; font-weight: 500; max-width: 350px; line-height: 1.4;">
+                        Periodismo de profundidad, reportajes y denuncias desde Boyacá para el mundo.
+                    </p>
+                </div>
+                
+                <div style="width: 100%; padding-bottom: 20px;">
+                    <a href="https://www.youtube.com/@Alter-NativaTv/videos" target="_blank" 
+                        style="display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(45deg, #ff0000, #b20000, #800000); color: white; text-decoration: none; font-family: 'Bebas Neue'; font-size: 1.6rem; padding: 12px 30px; border-radius: 50px; transition: 0.3s; box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4); letter-spacing: 1px; width: 85%; max-width: 300px; box-sizing: border-box;"
+                        onmouseover="this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.transform='scale(1)'">
+                        
+                        <i class="fab fa-youtube" style="margin-right: 10px; font-size: 1.6rem;"></i> 
+                        <span style="white-space: nowrap;">SUSCRÍBETE</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scanner-line-glow" style="position: absolute; width: 100%; height: 50px; background: linear-gradient(to bottom, transparent, rgba(255, 0, 0, 0.15), transparent); border-bottom: 1px solid rgba(255, 0, 0, 0.4); pointer-events: none; top: 0;"></div>
+    </div>
+</section>
+
+<style>
+.btn-yt-direct {
+    background: #ff0000;
+    color: white !important;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: inline-block;
+    transition: 0.3s;
+    width: 90%;
+    text-align: center;
+}
+.btn-yt-direct:hover {
+    background: white;
+    color: #ff0000 !important;
+    transform: translateY(-2px);
+}
+</style>
+<section class="news-block tk-border" data-aos="fade-up" data-aos-delay="200">
+    <div class="stats-box-main" style="border: 2px solid #ff0050; background: rgba(0,0,0,0.95); padding: 30px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(255, 0, 80, 0.2); min-height: 950px; display: flex; flex-direction: column;">
+        
+        <div class="live-status-header" style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="ping-dot" style="background-color: #00f2ea; box-shadow: 0 0 10px #00f2ea; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+            <span class="live-text" style="font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; letter-spacing: 3px; color: #00f2ea;">TENDENCIAS VIRALES</span>
+        </div>
+
+        <h2 class="section-title-premium" style="font-size: 3.2rem; margin-bottom: 5px; color: #fff; text-align: center; font-family: 'Bebas Neue'; letter-spacing: 2px; text-shadow: 2px 2px 0px #ff0050, -2px -2px 0px #00f2ea;">TIKTOK VIRAL</h2>
+        <div class="neon-divider-glow" style="max-width: 500px; margin: 0 auto 30px auto; background: linear-gradient(90deg, #ff0050, #00f2ea); height: 3px;"></div>
+
+        <div class="block-content" style="background: #000; height: 750px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #ff0050 #000; border-radius: 15px; border: 1px solid #333; flex-grow: 1;">
+            
+            <blockquote class="tiktok-embed" 
+                data-unique-id="alternativa.tv" 
+                data-embed-type="creator" 
+                style="max-width: 100%; min-width: 800px;">
+                <section>
+                    <a target="_blank" href="https://www.tiktok.com/@alternativa.tv?refer=creator_embed">@alternativa.tv</a>
+                </section>
+            </blockquote>
+            <script async src="https://www.tiktok.com/embed.js"></script>
+
+        </div>
+
+        <div class="tk-footer" style="background: transparent; padding: 25px 0 10px 0; text-align: center;">
+            <a href="https://www.tiktok.com/@alternativa.tv" target="_blank" 
+               style="display: inline-block; background: linear-gradient(45deg, #ff0050, #00f2ea); color: white; text-decoration: none; font-family: 'Bebas Neue'; font-size: 1.8rem; padding: 15px 40px; border-radius: 50px; transition: 0.3s; box-shadow: 0 5px 20px rgba(255, 0, 80, 0.4); letter-spacing: 2px;"
+               onmouseover="this.style.transform='scale(1.05)';"
+               onmouseout="this.style.transform='scale(1)';" >
+               <i class="fab fa-tiktok" style="margin-right: 10px;"></i> SIGUE A @ALTERNATIVA.TV
+            </a>
+        </div>
+
+        <div class="scanner-line-glow" style="position: absolute; width: 100%; height: 60px; background: linear-gradient(to bottom, transparent, rgba(255, 0, 80, 0.15), transparent); border-bottom: 2px solid rgba(0, 242, 234, 0.5); pointer-events: none; top: 0;"></div>
+    </div>
+</section>
+<section class="news-block ig-border" data-aos="fade-up" data-aos-delay="300">
+    <div class="stats-box-main" style="border: 2px solid #e1306c; background: rgba(0,0,0,0.95); padding: 30px; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 0 25px rgba(225, 48, 108, 0.2); display: flex; flex-direction: column; height: 1100px;">
+        
+        <div class="live-status-header" style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <span class="ping-dot" style="background-color: #f09433; box-shadow: 0 0 10px #f09433; width: 10px; height: 10px; border-radius: 50%; display: inline-block;"></span>
+            <span class="live-text" style="font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; letter-spacing: 3px; color: #f09433;">GALERÍA DE REPORTAJES</span>
+        </div>
+
+        <h2 class="section-title-premium" style="font-size: 3.2rem; margin-bottom: 5px; color: #fff; text-align: center; font-family: 'Bebas Neue'; letter-spacing: 2px;">INSTAGRAM PORTAL</h2>
+        <div class="neon-divider-glow" style="max-width: 500px; margin: 0 auto 30px auto; background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); height: 3px;"></div>
+
+        <div class="block-content" style="background: #fafafa; padding: 0; height: 850px; overflow-y: auto; border-radius: 15px; border: 1px solid #333; scrollbar-width: thin; scrollbar-color: #e1306c #000;">
+            
+<div style="padding: 12px 15px; background: white; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 10;">
+    
+    <div style="
+        width: 50px !important; 
+        height: 50px !important; 
+        min-width: 50px !important; 
+        min-height: 50px !important; 
+        max-width: 50px !important; 
+        max-height: 50px !important; 
+        border-radius: 50% !important; 
+        background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+        padding: 3px; 
+        flex: none !important; /* Esto anula cualquier intento de flexbox de deformarlo */
+        overflow: hidden; 
+        display: block;">
+        
+        <img src="imagenes/logo2.jpeg" style="
+            width: 100% !important; 
+            height: 100% !important; 
+            border-radius: 50% !important; 
+            border: 2px solid white; 
+            object-fit: cover; 
+            display: block;">
+    </div>
+
+    <div style="display: flex; flex-direction: column; justify-content: center;">
+        <p style="margin: 0; font-weight: 800; font-size: 0.9rem; color: #262626; font-family: 'Montserrat'; line-height: 1.2;">
+            alter_nativa_tv
+        </p>
+        <p style="margin: 0; font-size: 0.75rem; color: #0095f6; font-weight: 700; line-height: 1.2;">
+            Cuenta Oficial • Tunja
+        </p>
+    </div>
+</div>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 15px; padding: 15px;">
+                <div style="background: white; border-radius: 12px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <img src="imagenes/logo5.jpeg" style="width: 100%; height: 380px; object-fit: cover;">
+                    <div style="padding: 12px;">
+                        <p style="margin: 0; font-size: 0.9rem; color: #333; font-family: 'Montserrat';">
+                            <b style="color: #262626;">@alter_nativa_tv</b> Reportando desde el corazón de los territorios.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 12px; overflow: hidden; border: 1px solid #ddd; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <img src="imagenes/logo4.jpeg" style="width: 100%; height: 380px; object-fit: cover;">
+                    <div style="padding: 12px;">
+                        <p style="margin: 0; font-size: 0.9rem; color: #333; font-family: 'Montserrat';">
+                            <b style="color: #262626;">@alter_nativa_tv</b> Comunicación popular y alternativa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: transparent; padding: 25px 0 10px 0; text-align: center;">
+            <a href="https://www.instagram.com/alter_nativa_tv/" target="_blank" 
+                style="display: inline-block; background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: white; text-decoration: none; font-family: 'Bebas Neue'; font-size: 1.8rem; padding: 15px 40px; border-radius: 50px; transition: 0.3s; box-shadow: 0 5px 20px rgba(225, 48, 108, 0.4); letter-spacing: 1px;"
+                onmouseover="this.style.transform='scale(1.05)';"
+                onmouseout="this.style.transform='scale(1)';" >
+                <i class="fab fa-instagram" style="margin-right: 10px;"></i> VER INSTAGRAM
+            </a>
+        </div>
+
+        <div class="scanner-line-glow" style="position: absolute; width: 100%; height: 60px; background: linear-gradient(to bottom, transparent, rgba(225, 48, 108, 0.1), transparent); border-bottom: 1px solid rgba(240, 148, 51, 0.5); pointer-events: none; top: 0;"></div>
+    </div>
+</section>
+        </div>
+    </main>
+
+<section id="aliados-seccion" class="ads-container-wrapper" data-aos="fade-up">
+    <div class="ads-box"> 
+        
+        <div class="ads-header">
+            <div class="ads-line"></div>
+            <h2 class="ads-title">NUESTROS ALIADOS</h2>
+            <div class="ads-line"></div>
+        </div>
+        
+        <p class="ads-subtitle">Empresas comprometidas con la comunicación territorial</p>
+
+        <div class="ads-grid">
+            
+            <div class="ad-card">
+                <a href="https://wa.me/573028355917?text=Hola,%20vengo%20de%20Alter-Nativa%20TV" target="_blank">
+                    <img src="imagenes/gump2.jpg" alt="Aliado Gump" style="aspect-ratio: 1/1; object-fit: cover;">
+                    <div class="ad-tag" style="background: #c5a059;">ALIADO</div>
+                </a>
+            </div>
+
+            <div class="ad-card">
+                <a href="https://wa.me/573118099371" target="_blank">
+                    <img src="imagenes/logo3.jpeg" alt="Aliado 2" style="aspect-ratio: 1/1; object-fit: cover;">
+                    <div class="ad-tag" style="background: #c5a059;">ALIADO</div>
+                </a>
+            </div>
+
+            <div class="ad-card">
+                <a href="https://wa.me/573118099371" target="_blank">
+                    <img src="imagenes/logo4.jpeg" alt="Aliado 3" style="aspect-ratio: 1/1; object-fit: cover;">
+                    <div class="ad-tag" style="background: #c5a059;">ALIADO</div>
+                </a>
+            </div>
+
+            <div class="ad-card">
+                <a href="https://wa.me/573118099371" target="_blank">
+                    <img src="imagenes/logo6.jpeg" alt="Aliado 4" style="aspect-ratio: 1/1; object-fit: cover;">
+                    <div class="ad-tag" style="background: #c5a059;">ALIADO</div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="pautas" class="ads-container-wrapper" data-aos="fade-up">
+    <div class="ads-box"> 
+        
+        <div class="ads-header">
+            <div class="ads-line"></div>
+            <h2 class="ads-title">PUBLICIDAD</h2>
+            <div class="ads-line"></div>
+        </div>
+        
+        <p class="ads-subtitle">Periodismo independiente respaldado por marcas que creen en el territorio</p>
+
+        <div class="ads-grid">
+            
+            <div class="ad-card">
+                <a href="https://wa.me/3118099371" target="_blank">
+                    <img src="imagenes/logo1.jpeg" alt="Aliado 1">
+                    <div class="ad-tag">Publicidad</div>
+                </a>
+            </div>
+
+            <div class="ad-card">
+                <a href="https://wa.me/3118099371" target="_blank">
+                    <img src="imagenes/logo3.jpeg" alt="Aliado 2">
+                    <div class="ad-tag">Publicidad</div>
+                </a>
+            </div>
+
+            <div class="ad-card">
+                <a href="https://wa.me/3118099371" target="_blank">
+                    <img src="imagenes/logo4.jpeg" alt="Aliado 3">
+                    <div class="ad-tag">Publicidad</div>
+                </a>
+            </div>
+
+            <div class="ad-card">
+                <a href="https://wa.me/3118099371" target="_blank">
+                    <img src="imagenes/logo6.jpeg" alt="Aliado 4">
+                    <div class="ad-tag">Publicidad</div>
+                </a>
+            </div>
+
+            <div class="ad-card call-to-action">
+                <a href="https://wa.me/3118099371" target="_blank">
+                    <div class="cta-inner">
+                        <i class="fas fa-chart-line"></i>
+                        <span>IMPULSE SU MARCA AQUÍ</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="contacto" class="contact-section">
+    <div class="container">
+        <h2 class="section-title">CONÉCTATE CON NOSOTROS</h2>
+        <div class="social-contact-grid">
+            
+            <a href="https://www.facebook.com/AlternativaTVperiodismopopular" target="_blank" class="social-card-neon border-fb">
+                <i class="fab fa-facebook-f fb-icon"></i>
+                <span>FACEBOOK</span>
+            </a>
+
+            <a href="https://www.youtube.com/@Alter-NativaTv" target="_blank" class="social-card-neon border-yt">
+                <i class="fab fa-youtube yt-icon"></i>
+                <span>YOUTUBE</span>
+            </a>
+
+<a href="https://www.tiktok.com/@alternativa.tv" target="_blank" class="social-card-neon border-tk">
+    <i class="fab fa-tiktok tk-icon"></i>
+    <span>TIKTOK</span>
+</a>
+
+            <a href="https://www.instagram.com/alter_nativa_tv/" target="_blank" class="social-card-neon border-ig">
+                <i class="fab fa-instagram ig-icon"></i>
+                <span>INSTAGRAM</span>
+            </a>
+
+            <a href="https://wa.me/3118099371" target="_blank" class="social-card-neon border-wa">
+                <i class="fab fa-whatsapp wa-icon"></i>
+                <span>WHATSAPP</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<section class="stats-dashboard-container" data-aos="zoom-in">
+    <div class="stats-box-main" style="border: 2px solid #c5a059; background: rgba(0,0,0,0.9); padding: 40px 20px;">
+        
+        <div class="live-status-header" style="margin-bottom: 25px;">
+            <span class="ping-dot"></span>
+            <span class="live-text" style="font-family: 'Montserrat'; font-weight: 800; font-size: 1rem; letter-spacing: 3px; color: #25d366;">SISTEMA DE MONITOREO ACTIVO</span>
+        </div>
+
+        <h2 class="section-title-premium" style="font-size: 3rem; margin-bottom: 5px; color: #c5a059;">ESTADÍSTICAS DE AUDIENCIA</h2>
+        <div class="neon-divider-glow" style="max-width: 500px; margin: 0 auto 40px auto; height: 3px;"></div>
+
+        <div class="stats-grid-segment" style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+            
+            <div class="stat-card-mini" style="text-align: center;">
+                <span class="stat-mini-label" style="font-family: 'Bebas Neue'; font-size: 2rem; color: #25d366; letter-spacing: 2px; display: block; margin-bottom: 10px;">VISITAS HOY</span>
+                <div style="transform: scale(1.5); margin: 15px 0;">
+                    <img src="https://visitor-badge.laobi.icu/badge?page_id=alternativa_tv.hoy&color=25d366&left_text=EN%20VIVO" alt="Hoy">
+                </div>
+            </div>
+
+            <div class="stat-card-main" style="padding: 30px; background: rgba(197, 160, 89, 0.1); border-radius: 20px; border: 2px solid #c5a059; box-shadow: 0 0 20px rgba(197, 160, 89, 0.2);">
+                <span class="counter-label" style="font-family: 'Bebas Neue'; font-size: 2.2rem; color: #fff; letter-spacing: 3px; display: block; margin-bottom: 15px;">TOTAL LECTORES</span>
+                <div class="badge-wrapper-premium" style="transform: scale(2.2); margin: 30px 0;">
+                    <img src="https://visitor-badge.laobi.icu/badge?page_id=alternativa_tv_boyaca.portal&left_text=ACCESOS&color=c5a059&left_color=1a1a1a" alt="Total">
+                </div>
+            </div>
+
+            <div class="stat-card-mini" style="text-align: center;">
+                <span class="stat-mini-label" style="font-family: 'Bebas Neue'; font-size: 2rem; color: #00f2ea; letter-spacing: 2px; display: block; margin-bottom: 10px;">ESTA SEMANA</span>
+                <div style="transform: scale(1.5); margin: 15px 0;">
+                    <img src="https://visitor-badge.laobi.icu/badge?page_id=alternativa_tv.semana&color=00f2ea&left_text=REPORTE" alt="Semana">
+                </div>
+            </div>
+
+        </div>
+
+        <p class="enfoque-subtitle" style="margin-top: 40px; font-family: 'Montserrat'; font-weight: 700; font-size: 1.2rem; color: #c5a059; letter-spacing: 1px;">
+            Auditoría de tráfico garantizada para pautantes y aliados
+        </p>
+        
+        <div class="scanner-line-glow"></div>
+    </div>
+    
+</section>
+    <footer class="footer-simple">
+        <img src="imagenes/logo6.jpeg" class="footer-logo">
+        <p>ALTER-NATIVA TV &copy; 2026 | Comunicación Popular Independiente</p>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true });</script>
+
+
+    <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="imagenes/logo2.jpeg" alt="Logo Footer" class="footer-logo">
+            <h3>ALTER-NATIVA TV</h3>
+            <p>Periodismo alternativo e independiente desde el corazón de Boyacá. La voz de los territorios y la comunicación popular.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>EXPLORAR</h4>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#redes">Nuestras Redes</a></li>
+                <li><a href="#pautas">Publicidad</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+
+<div class="footer-col">
+    <h4>CONTACTO DIRECTO</h4>
+    <div class="footer-contact-buttons">
+        
+        <a href="https://www.google.com/maps/search/Tunja,+Boyaca" target="_blank" class="contact-btn-mini">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Tunja, Boyacá</span>
+        </a>
+
+        <a href="tel:+573118099371" class="contact-btn-mini">
+            <i class="fas fa-phone"></i>
+            <span>+57 311 809 9371</span>
+        </a>
+
+        <a href="mailto:alter-nativatv@hotmail.com" class="contact-btn-mini">
+            <i class="fas fa-envelope"></i>
+            <span>Enviar Correo</span>
+        </a>
+
+    </div>
+</div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 <strong>Alter-nativa TV</strong> - Todos los derechos reservados.</p>
+        <p style="font-size: 0.7rem; opacity: 0.6; margin-top: 5px;">Periodismo con Compromiso Social</p>
+    </div>
+</footer>
+</body>
+</html>
