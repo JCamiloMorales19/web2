@@ -2107,3 +2107,19 @@ body.modal-open {
 #splash-screen {
     transition: opacity 1s ease-out, backdrop-filter 1s ease-out;
 }
+/* Para que el texto en los nuevos cuadritos se vea ordenado */
+.ad-card h3 {
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.ad-card p {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+/* Animación de hover igual que los aliados */
+.ad-card:hover {
+    border-color: #c5a059;
+    transform: scale(1.02);
+}
